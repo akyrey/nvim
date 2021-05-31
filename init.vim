@@ -29,6 +29,9 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin()
 " Install Material color theme
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+" Statusline configuration
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'kyazdani42/nvim-web-devicons'
 " Provides common configuration for various lsp servers
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
@@ -43,6 +46,7 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " File system explorer
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -56,6 +60,8 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'vim-utils/vim-man'
 " Visualize undo history
 Plug 'mbbill/undotree'
+" Metrics, insights and time tracking
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 let mapleader = " "
@@ -69,10 +75,12 @@ let g:material_theme_style = 'darker'
 colorscheme material
 
 " Color line numbers
-hi LineNr ctermfg=0 guifg=#FBC02D
+hi LineNr ctermfg=0 guifg=#2196f3
 hi CursorLineNr ctermfg=0 guifg=#FBC02D
 
 augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 60})
 augroup END
+
+lua init = require('init')
