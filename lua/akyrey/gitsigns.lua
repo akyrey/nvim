@@ -7,7 +7,7 @@ require('gitsigns').setup({
     changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
   },
   numhl = true,
-  linehl = true,
+  linehl = false,
   keymaps = {
     -- Default keymap options
     noremap = true,
