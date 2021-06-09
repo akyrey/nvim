@@ -112,6 +112,7 @@ nvim_lsp.diagnosticls.setup {
         formatFiletypes = formatFiletypes
     }
 }
+
 -- Configure PHP intelephense language server
 nvim_lsp.intelephense.setup {}
 
@@ -123,4 +124,12 @@ nvim_lsp.angularls.setup {
   on_new_config = function(new_config,new_root_dir)
     new_config.cmd = angularls_cmd
   end,
+}
+
+-- Configure HTML language server
+local html_capabilities = vim.lsp.protocol.make_client_capabilities()
+html_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+nvim_lsp.html.setup {
+  capabilities = html_capabilities,
 }
