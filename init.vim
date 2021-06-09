@@ -49,9 +49,8 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-" File system explorer
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Mark and easily navigate through files
+Plug 'ThePrimeagen/harpoon'
 " Formatter
 Plug 'sbdchd/neoformat'
 " Git management
