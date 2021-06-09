@@ -115,3 +115,12 @@ nvim_lsp.diagnosticls.setup {
 -- Configure PHP intelephense language server
 nvim_lsp.intelephense.setup {}
 
+-- Configure Angular language server
+local angularls_cmd = {"ngserver", "--stdio", "--tsProbeLocations", "node_modules" , "--ngProbeLocations", "node_modules"}
+
+nvim_lsp.angularls.setup {
+  cmd = angularls_cmd,
+  on_new_config = function(new_config,new_root_dir)
+    new_config.cmd = angularls_cmd
+  end,
+}
