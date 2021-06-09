@@ -112,3 +112,6 @@ nvim_lsp.diagnosticls.setup {
         formatFiletypes = formatFiletypes
     }
 }
+-- Configure PHP intelephense language server
+nvim_lsp.intelephense.setup {}
+
