@@ -3,9 +3,9 @@
 " inoremap <C-Left> <esc>:call AfPPAlternatePluthPluth()<CR>
 " inoremap <C-Up> <esc>:call AfPPAlternate()<CR>
 " Go to next occurence in global quickfix list
-nnoremap <C-k> :cnext<CR>zz
+nnoremap <leader><C-k> :cnext<CR>zz
 " Go to previous occurence in global quickfix list
-nnoremap <C-j> :cprev<CR>zz
+nnoremap <leader><C-j> :cprev<CR>zz
 " Go to next occurence in local quickfix list
 nnoremap <leader>k :lnext<CR>zz
 " Go to previous occurence in local quickfix list
