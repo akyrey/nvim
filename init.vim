@@ -38,6 +38,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
 " Tree like structure to display symbols in file based on lsp
 Plug 'simrat39/symbols-outline.nvim'
+" Parser generator and parsing library
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 " Comment multiple lines
 Plug 'tpope/vim-commentary'
 " Auto completion and snippets
