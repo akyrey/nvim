@@ -55,7 +55,7 @@ local function set_vim_o()
     -- Number of spaces that <Tab> in file uses
     tabstop = 2,
     -- Where to store undo files
-    undodir = "$HOME/.vim/undodir",
+    undodir = vim.fn.stdpath('data').."/undodir",
     -- Save undo information in a file
     undofile = true,
     -- After this many milliseconds flush swap file
