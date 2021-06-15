@@ -153,6 +153,14 @@ local function set_keymaps()
   map('n', '<leader>vh', "<CMD>lua require('telescope.builtin').help_tags()<CR>", options)
   -- Search by tree-sitter symbols
   map('n', '<leader>pt', "<CMD>lua require('telescope.builtin').treesitter()<CR>", options)
+  -- List worktrees
+  map('n', '<leader>fw', '<CMD>lua require("telescope").extensions.git_worktree.git_worktrees()<CR>', options)
+  -- ------------------- --
+  --    Git Worktree     --
+  -- ------------------- --
+  map('n', '<leader>wc', '<CMD>lua require("git-worktree").create_worktree(vim.fn.input("Worktree name > "), vim.fn.input("Worktree upstream > "))<CR>', options)
+  map('n', '<leader>ws', '<CMD>lua require("git-worktree").switch_worktree(vim.fn.input("Worktree name > "))<CR>', options)
+  map('n', '<leader>wd', '<CMD>lua require("git-worktree").delete_worktree(vim.fn.input("Worktree name > "))<CR>', options)
 end
 
 local function init()
