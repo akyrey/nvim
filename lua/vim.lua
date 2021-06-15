@@ -45,7 +45,7 @@ local function set_vim_o()
     -- Message on status line to show current mode
     showmode = false,
     -- When and how to display the sign column
-    signcolumn = yes,
+    signcolumn = "yes",
     -- Put cursor at the right indentation after creating a new line
     smartindent = true,
     -- Number of spaces that <Tab> uses while editing
