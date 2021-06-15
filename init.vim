@@ -30,7 +30,7 @@ call plug#begin()
 " Install Material color theme
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 " Statusline configuration
-Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 " Provides common configuration for various lsp servers
 Plug 'neovim/nvim-lsp'
@@ -40,15 +40,17 @@ Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
 " Parser generator and parsing library
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+Plug 'romgrk/nvim-treesitter-context'
 " Comment multiple lines
 Plug 'tpope/vim-commentary'
 " Auto completion and snippets
 Plug 'hrsh7th/nvim-compe'
+Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 " Fuzzy finder over list
-Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " Mark and easily navigate through files
