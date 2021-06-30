@@ -167,7 +167,7 @@ local function set_keymaps()
 end
 
 local function init()
-  set_augroup_to_wrap_markdown()
+  -- set_augroup_to_wrap_markdown()
   set_yank_highlight()
   set_vim_g()
   set_vim_o()
