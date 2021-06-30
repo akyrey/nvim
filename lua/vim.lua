@@ -24,6 +24,8 @@ local function set_vim_o()
     cmdheight = 1,
     -- Columns to highlight
     colorcolumn = "120",
+    -- Encoding used internally
+    encoding = "UTF-8",
     -- Avoid making sounds on error
     errorbells = false,
     -- Use spaces when <Tab> is inserted
