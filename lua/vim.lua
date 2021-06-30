@@ -135,7 +135,8 @@ local function set_keymaps()
   -- ------------------- --
   --       NERDTree      --
   -- ------------------- --
-  map('n', '<Alt-1>', '<CMD>NERDTreeToggle<CR>', options)
+  -- map('n', '¡', '<CMD>NERDTreeToggle<CR>', options)
+  map('n', '<leader>pv', '<CMD>Ex<CR>', options)
   -- ------------------- --
   --      Telescope      --
   -- ------------------- --
