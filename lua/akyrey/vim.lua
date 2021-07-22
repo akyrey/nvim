@@ -87,6 +87,18 @@ local function set_vim_o()
   vim.cmd('set guicursor+=i-ci:ver20-Cursor')
   vim.cmd('set guicursor+=r-cr:hor20-Cursor')
   vim.cmd('set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175')
+
+  -- Nice menu when typings `:find *.py`
+  vim.cmd('set wildmode=longest,list,full')
+  vim.cmd('set wildmenu')
+  vim.cmd('set path+=**')
+
+  -- Color line numbers
+  vim.cmd('hi LineNr ctermfg=0 guifg=#2196f3')
+  vim.cmd('hi CursorLineNr ctermfg=0 guifg=#FBC02D')
+
+  vim.cmd("let g:material_theme_style = 'darker'")
+  vim.cmd('colorscheme material')
 end
 
 local function set_keymaps()
@@ -166,12 +178,23 @@ local function set_keymaps()
   map('n', '<leader>wd', '<CMD>lua require("git-worktree").delete_worktree(vim.fn.input("Worktree name > "))<CR>', options)
 end
 
+local function set_ignored()
+  vim.cmd('set wildignore+=*.pyc')
+  vim.cmd('set wildignore+=*_build/*')
+  vim.cmd('set wildignore+=**/coverage/*')
+  vim.cmd('set wildignore+=**/node_modules/*')
+  vim.cmd('set wildignore+=**/android/*')
+  vim.cmd('set wildignore+=**/ios/*')
+  vim.cmd('set wildignore+=**/.git/*')
+end
+
 local function init()
   -- set_augroup_to_wrap_markdown()
   set_yank_highlight()
   set_vim_g()
   set_vim_o()
   set_keymaps()
+  set_ignored()
 end
 
 return {
