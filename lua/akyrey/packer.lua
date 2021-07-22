@@ -128,6 +128,7 @@ end
 local function init()
   packer_verify()
   packer_startup()
+  vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
 end
 
 return {
