@@ -21,11 +21,18 @@ local function packer_startup()
   packer.reset()
 
   -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+  use {
+    'wbthomason/packer.nvim',
+    event = 'VimEnter'
+  }
   -- Install Material color theme
   use {
     'kaicataldo/material.vim',
-    branch = 'main'
+    branch = 'main',
+    after = 'packer.nvim',
+    config = function ()
+      require'akyrey.plugins.material'.init()
+    end
   }
   -- Statusline configuration
   use {
@@ -33,6 +40,7 @@ local function packer_startup()
     requires = {
       'kyazdani42/nvim-web-devicons'
     },
+    after = 'material.vim',
     config = function ()
       require'akyrey.plugins.lualine'.init()
     end
@@ -41,7 +49,10 @@ local function packer_startup()
   use {
     'neovim/nvim-lsp',
     requires = {
-      'neovim/nvim-lspconfig',
+      {
+        'neovim/nvim-lspconfig',
+        -- after = 'nvim-lspinstall'
+      },
       'glepnir/lspsaga.nvim',
       -- Tree like structure to display symbols in file based on lsp
       'simrat39/symbols-outline.nvim'
@@ -50,16 +61,23 @@ local function packer_startup()
       require'akyrey.plugins.lsp-config'
     end
   }
+  use {
+    'kabouzeid/nvim-lspinstall',
+    -- event = 'BufRead'
+  }
   -- Parser generator and parsing library
   use {
     'nvim-treesitter/nvim-treesitter',
-    requires = {
-      'romgrk/nvim-treesitter-context'
-    },
     run = 'TSUpdate',
+    event = 'BufRead',
     config = function ()
-      require'akyrey.plugins.tree-sitter'.init()
+      require'akyrey.plugins.treesitter'.init()
     end
+  }
+  use {
+    'romgrk/nvim-treesitter-context',
+    requires = 'nvim-treesitter/nvim-treesitter',
+    event = 'BufRead'
   }
   -- Comment multiple lines
   use 'tpope/vim-commentary'
@@ -75,31 +93,69 @@ local function packer_startup()
     'hrsh7th/nvim-compe',
     requires = {
       {
-        'erkrnt/compe-tabnine',
-        run = './install.sh'
+        'L3MON4D3/LuaSnip',
+        wants = 'friendly-snippets',
+        event = 'InsertCharPre',
+        config = function()
+          require'akyrey.plugins.luasnip'.init()
+        end
       },
-      'hrsh7th/vim-vsnip',
-      'hrsh7th/vim-vsnip-integ'
+      {
+        'rafamadriz/friendly-snippets',
+        event = 'InsertCharPre'
+      }
     },
+    event = 'InsertEnter',
+    wants = 'LuaSnip',
     config = function ()
       require'akyrey.plugins.compe'.init()
+    end
+  }
+  use {
+    'erkrnt/compe-tabnine',
+    requires = {
+      'hrsh7th/nvim-compe',
+    },
+    event = 'InsertEnter',
+    run = './install.sh',
+    config = function ()
       require'akyrey.plugins.compe_tabnine'.init()
     end
   }
   -- Fuzzy finder over list
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-lua/popup.nvim'
+  use {
+    'nvim-lua/plenary.nvim',
+  }
+  use {
+    'nvim-lua/popup.nvim',
+    requires = 'nvim-lua/plenary.nvim'
+  }
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
-      'nvim-telescope/telescope-fzy-native.nvim'
+      'nvim-telescope/telescope-fzy-native.nvim',
+      {
+        'ThePrimeagen/git-worktree.nvim',
+        requires = {
+          'nvim-lua/plenary.nvim',
+        },
+        config = function ()
+          require'akyrey.plugins.git-worktree'.init()
+        end
+      }
     },
+    requires = 'nvim-lua/popup.nvim',
     config = function ()
       require'akyrey.plugins.telescope'.init()
     end
   }
   -- Mark and easily navigate through files
-  use 'ThePrimeagen/harpoon'
+  use {
+    'ThePrimeagen/harpoon',
+    requires = {
+      'nvim-lua/popup.nvim',
+    },
+  }
   -- Formatter
   use 'sbdchd/neoformat'
   -- Git management
@@ -107,14 +163,11 @@ local function packer_startup()
   use 'junegunn/gv.vim'
   use {
     'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
     config = function ()
       require'akyrey.plugins.gitsigns'.init()
-    end
-  }
-  use {
-    'ThePrimeagen/git-worktree.nvim',
-    config = function ()
-      require'akyrey.plugins.git_worktree'.init()
     end
   }
   -- Man page inside vim
@@ -128,7 +181,6 @@ end
 local function init()
   packer_verify()
   packer_startup()
-  vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
 end
 
 return {

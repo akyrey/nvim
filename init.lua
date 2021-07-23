@@ -1,1 +1,1 @@
-require 'akyrey'.init()
+require'akyrey'.init()

@@ -92,13 +92,6 @@ local function set_vim_o()
   vim.cmd('set wildmode=longest,list,full')
   vim.cmd('set wildmenu')
   vim.cmd('set path+=**')
-
-  -- Color line numbers
-  vim.cmd('hi LineNr ctermfg=0 guifg=#2196f3')
-  vim.cmd('hi CursorLineNr ctermfg=0 guifg=#FBC02D')
-
-  vim.cmd("let g:material_theme_style = 'darker'")
-  vim.cmd('colorscheme material')
 end
 
 local function set_keymaps()
