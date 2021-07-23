@@ -181,6 +181,7 @@ end
 local function init()
   packer_verify()
   packer_startup()
+  vim.cmd[[autocmd BufWritePost lua/akyrey/packer.lua source <afile> | PackerSync]]
 end
 
 return {
