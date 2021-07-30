@@ -77,11 +77,8 @@ _G.packer_plugins = {
     wants = { "friendly-snippets" }
   },
   ["compe-tabnine"] = {
-    after_files = { "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/compe-tabnine/after/plugin/compe_tabnine.vim" },
-    config = { "\27LJ\2\nI\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit!akyrey.plugins.compe_tabnine\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/compe-tabnine"
+    loaded = true,
+    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/start/compe-tabnine"
   },
   ["friendly-snippets"] = {
     loaded = false,
@@ -106,9 +103,18 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/akyrey/.local/share/nvim/site/pack/packer/start/harpoon"
   },
+  ["lspkind-nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/lspkind-nvim"
+  },
   ["lspsaga.nvim"] = {
-    loaded = true,
-    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+    load_after = {
+      ["nvim-lspconfig"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
     config = { "\27LJ\2\nC\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit\27akyrey.plugins.lualine\frequire\0" },
@@ -133,28 +139,42 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/akyrey/.local/share/nvim/site/pack/packer/start/neoformat"
   },
+  ["nvim-autopairs"] = {
+    config = { "\27LJ\2\nE\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit\29akyrey.plugins.autopairs\frequire\0" },
+    load_after = {
+      ["nvim-compe"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
+  },
   ["nvim-compe"] = {
+    after = { "nvim-autopairs" },
     after_files = { "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe.vim" },
-    config = { "\27LJ\2\nA\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit\25akyrey.plugins.compe\frequire\0" },
+    config = { "\27LJ\2\nù\1\0\0\3\0\5\0\0166\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\4\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\27akyrey.plugins.lspkind!akyrey.plugins.compe_tabnine\tinit\25akyrey.plugins.compe\frequire\0" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/nvim-compe",
     wants = { "LuaSnip" }
   },
-  ["nvim-lsp"] = {
-    config = { "\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30akyrey.plugins.lsp-config\frequire\0" },
-    loaded = true,
-    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/start/nvim-lsp"
-  },
   ["nvim-lspconfig"] = {
-    loaded = true,
-    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    after = { "lspsaga.nvim" },
+    config = { "\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30akyrey.plugins.lsp-config\frequire\0" },
+    load_after = {
+      ["nvim-lspinstall"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
-    loaded = true,
-    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+    after = { "nvim-lspconfig" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/nvim-lspinstall"
   },
   ["nvim-treesitter"] = {
+    after = { "todo-comments.nvim" },
     config = { "\27LJ\2\nF\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit\30akyrey.plugins.treesitter\frequire\0" },
     loaded = false,
     needs_bufread = true,
@@ -170,7 +190,7 @@ _G.packer_plugins = {
     path = "/Users/akyrey/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
-    after = { "material.vim" },
+    after = { "material.vim", "vim-wakatime" },
     loaded = false,
     needs_bufread = false,
     path = "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/packer.nvim"
@@ -198,8 +218,12 @@ _G.packer_plugins = {
   },
   ["todo-comments.nvim"] = {
     config = { "\27LJ\2\nI\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit!akyrey.plugins.todo-comments\frequire\0" },
-    loaded = true,
-    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/start/todo-comments.nvim"
+    load_after = {
+      ["nvim-treesitter"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/todo-comments.nvim"
   },
   undotree = {
     loaded = true,
@@ -218,8 +242,12 @@ _G.packer_plugins = {
     path = "/Users/akyrey/.local/share/nvim/site/pack/packer/start/vim-man"
   },
   ["vim-wakatime"] = {
-    loaded = true,
-    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/start/vim-wakatime"
+    load_after = {
+      ["packer.nvim"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/akyrey/.local/share/nvim/site/pack/packer/opt/vim-wakatime"
   }
 }
 
@@ -228,30 +256,22 @@ time([[Defining packer_plugins]], false)
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\nD\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit\28akyrey.plugins.gitsigns\frequire\0", "config", "gitsigns.nvim")
 time([[Config for gitsigns.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\2\nE\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit\29akyrey.plugins.telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
--- Config for: nvim-lsp
-time([[Config for nvim-lsp]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30akyrey.plugins.lsp-config\frequire\0", "config", "nvim-lsp")
-time([[Config for nvim-lsp]], false)
 -- Config for: git-worktree.nvim
 time([[Config for git-worktree.nvim]], true)
 try_loadstring("\27LJ\2\nH\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit akyrey.plugins.git-worktree\frequire\0", "config", "git-worktree.nvim")
 time([[Config for git-worktree.nvim]], false)
--- Config for: todo-comments.nvim
-time([[Config for todo-comments.nvim]], true)
-try_loadstring("\27LJ\2\nI\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit!akyrey.plugins.todo-comments\frequire\0", "config", "todo-comments.nvim")
-time([[Config for todo-comments.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\nE\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\tinit\29akyrey.plugins.telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'friendly-snippets', 'LuaSnip'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-compe', 'compe-tabnine'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'packer.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'nvim-treesitter-context'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'friendly-snippets', 'LuaSnip'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'nvim-treesitter-context', 'nvim-lspinstall'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'lspkind-nvim', 'nvim-compe'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

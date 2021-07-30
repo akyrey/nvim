@@ -47,13 +47,13 @@ local function packer_startup()
   }
   -- Provides common configuration for various lsp servers
   use {
-    'neovim/nvim-lsp',
+    'kabouzeid/nvim-lspinstall',
+    event = 'BufRead'
+  }
+  use {
+    'neovim/nvim-lspconfig',
+    after = 'nvim-lspinstall',
     requires = {
-      {
-        'neovim/nvim-lspconfig',
-        -- after = 'nvim-lspinstall'
-      },
-      'glepnir/lspsaga.nvim',
       -- Tree like structure to display symbols in file based on lsp
       'simrat39/symbols-outline.nvim'
     },
@@ -62,8 +62,8 @@ local function packer_startup()
     end
   }
   use {
-    'kabouzeid/nvim-lspinstall',
-    -- event = 'BufRead'
+    'glepnir/lspsaga.nvim',
+    after = 'nvim-lspconfig',
   }
   -- Parser generator and parsing library
   use {
@@ -79,11 +79,20 @@ local function packer_startup()
     requires = 'nvim-treesitter/nvim-treesitter',
     event = 'BufRead'
   }
+  -- Automatically insert pairs
+  use {
+    'windwp/nvim-autopairs',
+    after = 'nvim-compe',
+    config = function ()
+      require'akyrey.plugins.autopairs'.init()
+    end
+  }
   -- Comment multiple lines
   use 'tpope/vim-commentary'
   -- Highlight todos
   use {
     'folke/todo-comments.nvim',
+    after = 'nvim-treesitter',
     config = function ()
       require'akyrey.plugins.todo-comments'.init()
     end
@@ -92,6 +101,10 @@ local function packer_startup()
   use {
     'hrsh7th/nvim-compe',
     requires = {
+      {
+        'erkrnt/compe-tabnine',
+        run = './install.sh',
+      },
       {
         'L3MON4D3/LuaSnip',
         wants = 'friendly-snippets',
@@ -103,23 +116,18 @@ local function packer_startup()
       {
         'rafamadriz/friendly-snippets',
         event = 'InsertCharPre'
+      },
+      {
+        'onsails/lspkind-nvim',
+        event = 'InsertEnter'
       }
     },
     event = 'InsertEnter',
     wants = 'LuaSnip',
     config = function ()
       require'akyrey.plugins.compe'.init()
-    end
-  }
-  use {
-    'erkrnt/compe-tabnine',
-    requires = {
-      'hrsh7th/nvim-compe',
-    },
-    event = 'InsertEnter',
-    run = './install.sh',
-    config = function ()
       require'akyrey.plugins.compe_tabnine'.init()
+      require'akyrey.plugins.lspkind'.init()
     end
   }
   -- Fuzzy finder over list
@@ -175,7 +183,10 @@ local function packer_startup()
   -- Visualize undo history
   use 'mbbill/undotree'
   -- Metrics, insights and time tracking
-  use 'wakatime/vim-wakatime'
+  use {
+    'wakatime/vim-wakatime',
+    after = 'packer.nvim',
+  }
 end
 
 local function init()
