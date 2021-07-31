@@ -157,9 +157,7 @@ local function packer_startup()
   -- Mark and easily navigate through files
   use {
     'ThePrimeagen/harpoon',
-    requires = {
-      'nvim-lua/popup.nvim',
-    },
+    requires = 'nvim-lua/popup.nvim',
   }
   -- Formatter
   use 'sbdchd/neoformat'
