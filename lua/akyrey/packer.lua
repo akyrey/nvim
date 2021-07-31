@@ -160,7 +160,10 @@ local function packer_startup()
     requires = 'nvim-lua/popup.nvim',
   }
   -- Formatter
-  use 'sbdchd/neoformat'
+  use {
+    'sbdchd/neoformat',
+    event = 'BufRead',
+  }
   -- Git management
   use 'tpope/vim-fugitive'
   use 'junegunn/gv.vim'
@@ -178,10 +181,7 @@ local function packer_startup()
   -- Visualize undo history
   use 'mbbill/undotree'
   -- Metrics, insights and time tracking
-  use {
-    'wakatime/vim-wakatime',
-    after = 'packer.nvim',
-  }
+  use 'wakatime/vim-wakatime'
 end
 
 local function init()
