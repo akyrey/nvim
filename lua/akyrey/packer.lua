@@ -144,9 +144,6 @@ local function packer_startup()
       'nvim-telescope/telescope-fzy-native.nvim',
       {
         'ThePrimeagen/git-worktree.nvim',
-        requires = {
-          'nvim-lua/plenary.nvim',
-        },
         config = function ()
           require'akyrey.plugins.git-worktree'.init()
         end
