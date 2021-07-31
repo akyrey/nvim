@@ -1,3 +1,30 @@
+local function unload_plugins()
+  local disabled_built_ins = {
+    -- "netrw",
+    -- "netrwPlugin",
+    -- "netrwSettings",
+    -- "netrwFileHandlers",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
+    "matchit"
+  }
+
+  for _, plugin in pairs(disabled_built_ins) do
+    vim.g["loaded_" .. plugin] = 1
+  end
+end
+
 local function set_vim_g()
   vim.g.mapleader = " "
 end
@@ -183,6 +210,7 @@ local function set_ignored()
 end
 
 local function init()
+  unload_plugins()
   -- set_augroup_to_wrap_markdown()
   set_yank_highlight()
   set_vim_g()
