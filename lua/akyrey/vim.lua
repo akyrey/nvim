@@ -140,10 +140,11 @@ local function set_keymaps()
   map('n', '<leader>cs', "<CMD>lua require('harpoon.term').sendCommand(1, 1)<CR>", options)
   map('n', '<leader>cd', "<CMD>lua require('harpoon.term').sendCommand(1, 2)<CR>", options)
   -- ------------------- --
-  --       NERDTree      --
+  --    File explorer    --
   -- ------------------- --
   -- map('n', '¡', '<CMD>NERDTreeToggle<CR>', options)
-  map('n', '<leader>pv', '<CMD>Ex<CR>', options)
+  -- map('n', '<leader>pv', '<CMD>Ex<CR>', options)
+  map('n', '<leader>pv', '<CMD>NvimTreeToggle<CR>', options)
   -- ------------------- --
   --      Telescope      --
   -- ------------------- --

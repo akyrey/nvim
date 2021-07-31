@@ -45,6 +45,17 @@ local function packer_startup()
       require'akyrey.plugins.lualine'.init()
     end
   }
+  -- Tree directory structure
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons'
+    },
+    cmd = 'NvimTreeToggle',
+    config = function()
+      require 'akyrey.plugins.nvimtree'.init()
+    end
+  }
   -- Provides common configuration for various lsp servers
   use {
     'kabouzeid/nvim-lspinstall',
