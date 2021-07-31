@@ -123,7 +123,29 @@ end
 
 local function set_keymaps()
   local map = vim.api.nvim_set_keymap
-  local options = { noremap = false }
+  local options = { noremap = true }
+
+  -- Y will yank from cursor until the end of the line instead of entire line
+  map('n', 'Y', 'y$', options)
+  -- Keeping cursor centered
+  map('n', 'n', 'nzzzv', options)
+  map('n', 'N', 'Nzzzv', options)
+  map('n', 'J', 'mzJ`z', options)
+  -- Undo break points
+  map('i', ',', ',<c-g>u', options)
+  map('i', '.', '.<c-g>u', options)
+  map('i', '!', '!<c-g>u', options)
+  map('i', '?', '?<c-g>u', options)
+  -- Jumplist update on relative motions
+  map('n', 'k', '(v:count > 5 ? "m`" . v:count : "") . "k"', { noremap = true, expr = true, silent = true })
+  map('n', 'j', '(v:count > 5 ? "m`" . v:count : "") . "j"', { noremap = true, expr = true, silent = true })
+  -- Moving text
+  map('v', 'J', ':m \'>+1<CR>gv=gv', options)
+  map('v', 'K', ':m \'<-2<CR>gv=gv', options)
+  map('i', '<C-j>', '<esc>:m .+1<CR>', options)
+  map('i', '<C-k>', '<esc>:m .-2<CR>', options)
+  map('n', '<leader>j', ':m .+1<CR>==', options)
+  map('n', '<leader>k', ':m .-2<CR>==', options)
 
   -- ------------------- --
   --      Navigation     --
