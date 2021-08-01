@@ -127,7 +127,7 @@ local function set_keymaps()
 
   -- Y will yank from cursor until the end of the line instead of entire line
   map('n', 'Y', 'y$', options)
-  -- Keeping cursor centered
+  -- Keeping cursor centered on search operations
   map('n', 'n', 'nzzzv', options)
   map('n', 'N', 'Nzzzv', options)
   map('n', 'J', 'mzJ`z', options)
