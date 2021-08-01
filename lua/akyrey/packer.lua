@@ -185,8 +185,12 @@ local function packer_startup()
   }
   -- Git management
   use 'tpope/vim-fugitive'
-  use 'junegunn/gv.vim'
-  use 'f-person/git-blame.nvim'
+  use {
+    'junegunn/gv.vim',
+    requires = {
+      'tpope/vim-fugitive'
+    }
+  }
   use {
     'lewis6991/gitsigns.nvim',
     requires = {
