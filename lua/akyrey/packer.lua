@@ -53,6 +53,13 @@ local function packer_startup()
       require'akyrey.plugins.lualine'.init()
     end
   }
+  use {
+    'akinsho/nvim-bufferline.lua',
+    after = 'material.vim',
+    config = function()
+      require 'akyrey.plugins.bufferline'.init()
+    end
+  }
   -- Tree directory structure
   use {
     'kyazdani42/nvim-tree.lua',
