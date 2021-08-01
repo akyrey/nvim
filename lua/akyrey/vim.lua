@@ -142,8 +142,8 @@ local function set_keymaps()
   -- Moving text
   map('v', 'J', ':m \'>+1<CR>gv=gv', options)
   map('v', 'K', ':m \'<-2<CR>gv=gv', options)
-  map('i', '<C-j>', '<esc>:m .+1<CR>', options)
-  map('i', '<C-k>', '<esc>:m .-2<CR>', options)
+  map('i', '<C-j>', '<esc>:m .+1<CR>V', options)
+  map('i', '<C-k>', '<esc>:m .-2<CR>V', options)
   map('n', '<leader>j', ':m .+1<CR>==', options)
   map('n', '<leader>k', ':m .-2<CR>==', options)
 
