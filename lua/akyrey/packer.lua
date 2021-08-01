@@ -34,6 +34,14 @@ local function packer_startup()
       require'akyrey.plugins.material'.init()
     end
   }
+  -- Color highlighter
+  use {
+    'norcalli/nvim-colorizer.lua',
+    after = 'material.vim',
+    config = function ()
+      require'akyrey.plugins.colorizer'.init()
+    end
+  }
   -- Statusline configuration
   use {
     'hoob3rt/lualine.nvim',
