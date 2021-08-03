@@ -198,21 +198,21 @@ local function set_keymaps()
   --      Telescope      --
   -- ------------------- --
   -- Searches for the string under your cursor in your current working directory
-  map('n', '<leader>ps', "<CMD>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>", options)
+  map('n', '<leader>ps', "<CMD>Telescope live_grep<CR>", options)
   -- Fuzzy search through the output of git ls-files command, respects .gitignore, optionally ignores untracked files
-  map('n', '<C-p>', "<CMD>lua require('telescope.builtin').git_files()<CR>", options)
+  map('n', '<C-p>', "<CMD>Telescope git_files<CR>", options)
   -- Lists files in your current working directory, respects .gitignore
-  map('n', '<Leader>pf', "<CMD>lua require('telescope.builtin').find_files()<CR>", options)
+  map('n', '<Leader>pf', "<CMD>Telescope find_files<CR>", options)
   -- Searches for the string under your cursor in your current working directory
-  map('n', '<leader>pw', "<CMD>lua require('telescope.builtin').grep_string { search = vim.fn.expand('<cword>') }<CR>", options)
+  map('n', '<leader>pw', "<CMD>Telescope grep_string<CR>", options)
   -- Lists open buffers in current neovim instance
-  map('n', '<leader>pb', "<CMD>lua require('telescope.builtin').buffers()<CR>", options)
+  map('n', '<leader>pb', "<CMD>Telescope buffers<CR>", options)
   -- Lists available help tags and opens a new window with the relevant help info on <cr>
-  map('n', '<leader>vh', "<CMD>lua require('telescope.builtin').help_tags()<CR>", options)
+  map('n', '<leader>vh', "<CMD>Telescope help_tags<CR>", options)
   -- Search by tree-sitter symbols
-  map('n', '<leader>pt', "<CMD>lua require('telescope.builtin').treesitter()<CR>", options)
+  map('n', '<leader>pt', "<CMD>Telescope treesitter<CR>", options)
   -- List worktrees
-  map('n', '<leader>fw', '<CMD>lua require("telescope").extensions.git_worktree.git_worktrees()<CR>', options)
+  map('n', '<leader>fw', '<CMD>Telescope git_worktree git_worktrees<CR>', options)
   -- ------------------- --
   --    Git Worktree     --
   -- ------------------- --

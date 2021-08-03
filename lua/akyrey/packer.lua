@@ -145,7 +145,6 @@ local function packer_startup()
       },
       {
         'onsails/lspkind-nvim',
-        event = 'InsertEnter'
       }
     },
     event = 'InsertEnter',
@@ -162,12 +161,20 @@ local function packer_startup()
   }
   use {
     'nvim-lua/popup.nvim',
-    requires = 'nvim-lua/plenary.nvim'
+    after = 'plenary.nvim'
   }
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
-      'nvim-telescope/telescope-fzy-native.nvim',
+      {
+        'nvim-lua/popup.nvim',
+      },
+      {
+        'nvim-lua/plenary.nvim',
+      },
+      {
+        'nvim-telescope/telescope-fzy-native.nvim',
+      },
       {
         'ThePrimeagen/git-worktree.nvim',
         config = function ()
@@ -175,7 +182,7 @@ local function packer_startup()
         end
       }
     },
-    requires = 'nvim-lua/popup.nvim',
+    cmd = 'Telescope',
     config = function ()
       require'akyrey.plugins.telescope'.init()
     end
@@ -183,7 +190,7 @@ local function packer_startup()
   -- Mark and easily navigate through files
   use {
     'ThePrimeagen/harpoon',
-    requires = 'nvim-lua/popup.nvim',
+    after = 'popup.nvim',
   }
   -- Formatter
   use {
@@ -191,12 +198,13 @@ local function packer_startup()
     event = 'BufRead',
   }
   -- Git management
-  use 'tpope/vim-fugitive'
+  use {
+    'tpope/vim-fugitive',
+    event = 'BufRead',
+  }
   use {
     'junegunn/gv.vim',
-    requires = {
-      'tpope/vim-fugitive'
-    }
+    after = 'vim-fugitive',
   }
   use {
     'lewis6991/gitsigns.nvim',
