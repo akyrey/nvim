@@ -191,6 +191,9 @@ local function packer_startup()
   use {
     'ThePrimeagen/harpoon',
     after = 'popup.nvim',
+    module = {
+      'harpoon',
+    }
   }
   -- Formatter
   use {

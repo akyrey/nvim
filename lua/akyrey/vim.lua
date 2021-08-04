@@ -184,10 +184,6 @@ local function set_keymaps()
   map('n', '<C-j>', "<CMD>lua require('harpoon.ui').nav_file(2)<CR>", options)
   map('n', '<C-k>', "<CMD>lua require('harpoon.ui').nav_file(3)<CR>", options)
   map('n', '<C-l>', "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", options)
-  map('n', '<leader>ts', "<CMD>lua require('harpoon.term').gotoTerminal(1)<CR>", options)
-  map('n', '<leader>td', "<CMD>lua require('harpoon.term').gotoTerminal(2)<CR>", options)
-  map('n', '<leader>cs', "<CMD>lua require('harpoon.term').sendCommand(1, 1)<CR>", options)
-  map('n', '<leader>cd', "<CMD>lua require('harpoon.term').sendCommand(1, 2)<CR>", options)
   -- ------------------- --
   --    File explorer    --
   -- ------------------- --
