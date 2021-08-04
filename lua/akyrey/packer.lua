@@ -182,7 +182,9 @@ local function packer_startup()
         end
       }
     },
-    cmd = 'Telescope',
+    module = {
+      'telescope',
+    },
     config = function ()
       require'akyrey.plugins.telescope'.init()
     end
