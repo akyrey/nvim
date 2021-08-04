@@ -150,18 +150,14 @@ local function set_keymaps()
   -- ------------------- --
   --      Navigation     --
   -- ------------------- --
-  -- Go to next occurence in global quickfix list
-  map('n', '<leader><C-k>', '<CMD>cnext<CR>zz', options)
-  -- Go to previous occurence in global quickfix list
-  map('n', '<leader><C-j>', '<CMD>cprev<CR>zz', options)
   -- Go to next occurence in local quickfix list
-  map('n', '<leader>k', '<CMD>lnext<CR>zz', options)
+  map('n', '<leader>nk', "<CMD>lua require('akyrey.plugins.utils').navigate_QF(true)<CR>zz", options)
   -- Go to previous occurence in local quickfix list
-  map('n', '<leader>j', '<CMD>lprev<CR>zz', options)
+  map('n', '<leader>nj', "<CMD>lua require('akyrey.plugins.utils').navigate_QF(false)<CR>zz", options)
   -- Open global quickfix list
-  map('n', '<C-q>', '<CMD>call ToggleQFList(1)<CR>', options)
+  map('n', '<leader>nq', "<CMD>lua require('akyrey.plugins.utils').toggle_global_or_local_QF()<CR>", options)
   -- Open local quickfix list
-  map('n', '<leader>q', '<CMD>call ToggleQFList(0)<CR>', options)
+  map('n', '<leader>nt', "<CMD>lua require('akyrey.plugins.utils').toggle_QF()<CR>", options)
   -- ------------------- --
   --          LSP        --
   -- ------------------- --
