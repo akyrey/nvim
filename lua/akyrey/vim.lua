@@ -188,8 +188,8 @@ local function set_keymaps()
   --    File explorer    --
   -- ------------------- --
   -- map('n', '¡', '<CMD>NERDTreeToggle<CR>', options)
-  -- map('n', '<leader>pv', '<CMD>Ex<CR>', options)
-  map('n', '<leader>pv', '<CMD>NvimTreeToggle<CR>', options)
+  map('n', '<leader>dc', '<CMD>Ex<CR>', options)
+  map('n', '<leader>dt', '<CMD>NvimTreeToggle<CR>', options)
   -- ------------------- --
   --      Telescope      --
   -- ------------------- --
